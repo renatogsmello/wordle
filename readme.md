@@ -6,3 +6,7 @@ Durante os 7 Days de JavaScript e DOM, o desafio será construir uma versão do 
 ### Dia 1
 
 Criação da estrutura HTML e usar tailwind css para estilização
+
+# Dia 2
+
+Escolher uma palavra de forma aleatório do arquivo JSON e fazer o teste das funções
