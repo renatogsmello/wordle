@@ -16,6 +16,36 @@
 						colors: {
 							darkBlue: "#14161C",
 						},
+						animation: {
+							shake: "shake 250ms ease-in-out",
+						},
+						keyframes: {
+							shake: {
+								"10%": {
+									transform: "translateX(-5%)",
+								},
+
+								"30%": {
+									transform: "translateX(5%)",
+								},
+
+								"50%": {
+									transform: "translateX(-7.5%)",
+								},
+
+								"70%": {
+									transform: "translateX(7.5%)",
+								},
+
+								"90%": {
+									transform: "translateX(-5%)",
+								},
+
+								"100%": {
+									transform: "translateX(0)",
+								},
+							},
+						},
 					},
 					fontFamily: {
 						sans: ["Kanit, sans-serif"],
@@ -24,85 +54,243 @@
 			}
 		</script>
 	</head>
-	<body class="bg-darkBlue h-screen">
+	<body class="bg-darkBlue h-screen flex flex-col">
 		<header class="border-b border-neutral-700">
 			<nav class="container mx-auto">
 				<img class="my-4" src="./images/Logo.png" alt="Wordle Logo" />
 			</nav>
 		</header>
-		<main>
-			<div class="flex justify-center mt-14">
-				<section class="grid grid-cols-5 gap-1">
-					<div class="w-16 h-16 border border-neutral-600"></div>
-					<div class="w-16 h-16 border border-neutral-600"></div>
-					<div class="w-16 h-16 border border-neutral-600"></div>
-					<div class="w-16 h-16 border border-neutral-600"></div>
-					<div class="w-16 h-16 border border-neutral-600"></div>
-					<div class="w-16 h-16 border border-neutral-600"></div>
-					<div class="w-16 h-16 border border-neutral-600"></div>
-					<div class="w-16 h-16 border border-neutral-600"></div>
-					<div class="w-16 h-16 border border-neutral-600"></div>
-					<div class="w-16 h-16 border border-neutral-600"></div>
-					<div class="w-16 h-16 border border-neutral-600"></div>
-					<div class="w-16 h-16 border border-neutral-600"></div>
-					<div class="w-16 h-16 border border-neutral-600"></div>
-					<div class="w-16 h-16 border border-neutral-600"></div>
-					<div class="w-16 h-16 border border-neutral-600"></div>
-					<div class="w-16 h-16 border border-neutral-600"></div>
-					<div class="w-16 h-16 border border-neutral-600"></div>
-					<div class="w-16 h-16 border border-neutral-600"></div>
-					<div class="w-16 h-16 border border-neutral-600"></div>
-					<div class="w-16 h-16 border border-neutral-600"></div>
-					<div class="w-16 h-16 border border-neutral-600"></div>
-					<div class="w-16 h-16 border border-neutral-600"></div>
-					<div class="w-16 h-16 border border-neutral-600"></div>
-					<div class="w-16 h-16 border border-neutral-600"></div>
-					<div class="w-16 h-16 border border-neutral-600"></div>
-					<div class="w-16 h-16 border border-neutral-600"></div>
-					<div class="w-16 h-16 border border-neutral-600"></div>
-					<div class="w-16 h-16 border border-neutral-600"></div>
-					<div class="w-16 h-16 border border-neutral-600"></div>
-					<div class="w-16 h-16 border border-neutral-600"></div>
+		<main class="flex flex-col items-center flex-1 justify-evenly">
+			<div id="message" class="fixed z-10 top-36 flex flex-col gap-2"></div>
+			<div class="flex justify-center">
+				<section id="guess-grid" class="grid grid-cols-5 gap-1">
+					<div class="w-16 text-white text-5xl h-16 flex items-center justify-center border border-neutral-600"></div>
+					<div class="w-16 text-white text-5xl h-16 flex items-center justify-center border border-neutral-600"></div>
+					<div class="w-16 text-white text-5xl h-16 flex items-center justify-center border border-neutral-600"></div>
+					<div class="w-16 text-white text-5xl h-16 flex items-center justify-center border border-neutral-600"></div>
+					<div class="w-16 text-white text-5xl h-16 flex items-center justify-center border border-neutral-600"></div>
+					<div class="w-16 text-white text-5xl h-16 flex items-center justify-center border border-neutral-600"></div>
+					<div class="w-16 text-white text-5xl h-16 flex items-center justify-center border border-neutral-600"></div>
+					<div class="w-16 text-white text-5xl h-16 flex items-center justify-center border border-neutral-600"></div>
+					<div class="w-16 text-white text-5xl h-16 flex items-center justify-center border border-neutral-600"></div>
+					<div class="w-16 text-white text-5xl h-16 flex items-center justify-center border border-neutral-600"></div>
+					<div class="w-16 text-white text-5xl h-16 flex items-center justify-center border border-neutral-600"></div>
+					<div class="w-16 text-white text-5xl h-16 flex items-center justify-center border border-neutral-600"></div>
+					<div class="w-16 text-white text-5xl h-16 flex items-center justify-center border border-neutral-600"></div>
+					<div class="w-16 text-white text-5xl h-16 flex items-center justify-center border border-neutral-600"></div>
+					<div class="w-16 text-white text-5xl h-16 flex items-center justify-center border border-neutral-600"></div>
+					<div class="w-16 text-white text-5xl h-16 flex items-center justify-center border border-neutral-600"></div>
+					<div class="w-16 text-white text-5xl h-16 flex items-center justify-center border border-neutral-600"></div>
+					<div class="w-16 text-white text-5xl h-16 flex items-center justify-center border border-neutral-600"></div>
+					<div class="w-16 text-white text-5xl h-16 flex items-center justify-center border border-neutral-600"></div>
+					<div class="w-16 text-white text-5xl h-16 flex items-center justify-center border border-neutral-600"></div>
+					<div class="w-16 text-white text-5xl h-16 flex items-center justify-center border border-neutral-600"></div>
+					<div class="w-16 text-white text-5xl h-16 flex items-center justify-center border border-neutral-600"></div>
+					<div class="w-16 text-white text-5xl h-16 flex items-center justify-center border border-neutral-600"></div>
+					<div class="w-16 text-white text-5xl h-16 flex items-center justify-center border border-neutral-600"></div>
+					<div class="w-16 text-white text-5xl h-16 flex items-center justify-center border border-neutral-600"></div>
+					<div class="w-16 text-white text-5xl h-16 flex items-center justify-center border border-neutral-600"></div>
+					<div class="w-16 text-white text-5xl h-16 flex items-center justify-center border border-neutral-600"></div>
+					<div class="w-16 text-white text-5xl h-16 flex items-center justify-center border border-neutral-600"></div>
+					<div class="w-16 text-white text-5xl h-16 flex items-center justify-center border border-neutral-600"></div>
+					<div class="w-16 text-white text-5xl h-16 flex items-center justify-center border border-neutral-600"></div>
 				</section>
 			</div>
-			<section class="mt-14">
+			<section data-keyboard>
 				<div class="grid grid-cols-[repeat(20,minmax(auto,1.25em))] auto-rows-[3em] gap-1 justify-center">
-					<button type="button" class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2">q</button>
-					<button type="button" class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2">w</button>
-					<button type="button" class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2">e</button>
-					<button type="button" class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2">r</button>
-					<button type="button" class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2">t</button>
-					<button type="button" class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2">y</button>
-					<button type="button" class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2">u</button>
-					<button type="button" class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2">i</button>
-					<button type="button" class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2">o</button>
-					<button type="button" class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2">p</button>
-					<div class=""></div>
-					<button type="button" class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2">a</button>
-					<button type="button" class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2">s</button>
-					<button type="button" class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2">d</button>
-					<button type="button" class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2">f</button>
-					<button type="button" class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2">g</button>
-					<button type="button" class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2">h</button>
-					<button type="button" class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2">j</button>
-					<button type="button" class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2">k</button>
-					<button type="button" class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2">l</button>
-					<div class=""></div>
-					<button type="button" class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-4">
-						enter
-					</button>
-					<button type="button" class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2">z</button>
-					<button type="button" class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2">x</button>
-					<button type="button" class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2">c</button>
-					<button type="button" class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2">v</button>
-					<button type="button" class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2">b</button>
-					<button type="button" class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2">n</button>
-					<button type="button" class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2">m</button>
 					<button
 						type="button"
+						data-key="q"
+						class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2"
+					>
+						q
+					</button>
+					<button
+						type="button"
+						data-key="w"
+						class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2"
+					>
+						w
+					</button>
+					<button
+						type="button"
+						data-key="e"
+						class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2"
+					>
+						e
+					</button>
+					<button
+						type="button"
+						data-key="r"
+						class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2"
+					>
+						r
+					</button>
+					<button
+						type="button"
+						data-key="t"
+						class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2"
+					>
+						t
+					</button>
+					<button
+						type="button"
+						data-key="y"
+						class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2"
+					>
+						y
+					</button>
+					<button
+						type="button"
+						data-key="u"
+						class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2"
+					>
+						u
+					</button>
+					<button
+						type="button"
+						data-key="i"
+						class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2"
+					>
+						i
+					</button>
+					<button
+						type="button"
+						data-key="o"
+						class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2"
+					>
+						o
+					</button>
+					<button
+						type="button"
+						data-key="p"
+						class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2"
+					>
+						p
+					</button>
+					<div class=""></div>
+					<button
+						type="button"
+						data-key="a"
+						class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2"
+					>
+						a
+					</button>
+					<button
+						type="button"
+						data-key="s"
+						class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2"
+					>
+						s
+					</button>
+					<button
+						type="button"
+						data-key="d"
+						class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2"
+					>
+						d
+					</button>
+					<button
+						type="button"
+						data-key="f"
+						class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2"
+					>
+						f
+					</button>
+					<button
+						type="button"
+						data-key="g"
+						class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2"
+					>
+						g
+					</button>
+					<button
+						type="button"
+						data-key="h"
+						class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2"
+					>
+						h
+					</button>
+					<button
+						type="button"
+						data-key="j"
+						class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2"
+					>
+						j
+					</button>
+					<button
+						type="button"
+						data-key="k"
+						class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2"
+					>
+						k
+					</button>
+					<button
+						type="button"
+						data-key="l"
+						class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2"
+					>
+						l
+					</button>
+					<div class=""></div>
+					<button type="button" data-enter class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-4">
+						enter
+					</button>
+					<button
+						type="button"
+						data-key="z"
+						class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2"
+					>
+						z
+					</button>
+					<button
+						type="button"
+						data-key="x"
+						class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2"
+					>
+						x
+					</button>
+					<button
+						type="button"
+						data-key="c"
+						class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2"
+					>
+						c
+					</button>
+					<button
+						type="button"
+						data-key="v"
+						class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2"
+					>
+						v
+					</button>
+					<button
+						type="button"
+						data-key="b"
+						class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2"
+					>
+						b
+					</button>
+					<button
+						type="button"
+						data-key="n"
+						class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2"
+					>
+						n
+					</button>
+					<button
+						type="button"
+						data-key="m"
+						class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2"
+					>
+						m
+					</button>
+					<button
+						type="button"
+						data-delete
 						class="uppercase flex justify-center items-center text-white bg-neutral-400 text-2xl font-bold col-span-2 flex justify-center items-center"
 					>
-						<img src="./images/apagar.png" alt="apagar" />
+						<img class="pointer-events-none" src="./images/apagar.png" alt="apagar" />
 					</button>
 				</div>
 			</section>
